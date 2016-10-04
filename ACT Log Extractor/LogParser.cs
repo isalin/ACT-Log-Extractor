@@ -41,10 +41,10 @@ namespace ACT_Log_Extractor
             Match match;
             foreach (var line in lines)
             {
-                match = new Regex(@"00\|\d+-\d+-\d+T(?<time>\d+:\d+:\d+).+?\|(?<code>\d+)\|(?<name>.+?)\|(?<message>.+)").Match(line);
+                match = new Regex(@"00\|\d+-\d+-\d+T(?<time>\d+:\d+:\d+).+?\|(?<code>\d+)\|.+?(?<name>[A-Z].+? [A-Z].+?)[A-Z].+?\|(?<message>.+)").Match(line);
                 if (match.Success)
                 {
-                    Debug.WriteLine(match.Groups["message"]);
+                    Debug.WriteLine(match.Groups["name"]);
                 }
                 
             }
