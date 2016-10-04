@@ -34,11 +34,15 @@ namespace ACT_Log_Extractor
             }
         }
 
-        internal void parse(ListBox listBox_logs)
+        internal void parse(ListBox listBox_logs, Form1 form)
         {
-            Debug.WriteLine(getFile(listBox_logs.SelectedItem.ToString()));
-            
-            
+            Debug.WriteLine("Filepath: " + getFile(listBox_logs.SelectedItem.ToString()));
+            var lines = File.ReadAllLines(getFile(listBox_logs.SelectedItem.ToString()));
+            foreach (var line in lines)
+            {
+                Debug.WriteLine(line);
+            }
+
         }
 
         private string getDate(string file)
