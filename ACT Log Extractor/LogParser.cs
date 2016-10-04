@@ -34,11 +34,30 @@ namespace ACT_Log_Extractor
             }
         }
 
+        internal void parse(ListBox listBox_logs)
+        {
+            Debug.WriteLine(getFile(listBox_logs.SelectedItem.ToString()));
+            
+            
+        }
+
         private string getDate(string file)
         {
             Regex regex = new Regex(@".+FFXIVLogs\\[A-z]+_(?<date>\d+)\.");
             Match match = regex.Match(file);
             return match.Groups["date"].Value;
+        }
+
+        private string getFile(string date)
+        {
+            foreach (var entry in list)
+            {
+                if (entry.Item1.Equals(date))
+                {
+                    return entry.Item2;
+                }
+            }
+            return null;
         }
 
         private string getLogDirPath()

@@ -29,7 +29,7 @@ namespace ACT_Log_Extractor
         {
             if (boxesChecked())
             {
-
+                log.parse(listBox_logs);
             }
             else
             {
