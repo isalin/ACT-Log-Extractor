@@ -38,9 +38,15 @@ namespace ACT_Log_Extractor
         {
             Debug.WriteLine("Filepath: " + getFile(listBox_logs.SelectedItem.ToString()));
             var lines = File.ReadAllLines(getFile(listBox_logs.SelectedItem.ToString()));
+            Match match;
             foreach (var line in lines)
             {
-                Debug.WriteLine(line);
+                match = new Regex(@"00\|\d+-\d+-\d+T(?<time>\d+:\d+:\d+).+?\|(?<code>\d+)\|(?<name>.+?)\|(?<message>.+)").Match(line);
+                if (match.Success)
+                {
+                    Debug.WriteLine(match.Groups["message"]);
+                }
+                
             }
 
         }
