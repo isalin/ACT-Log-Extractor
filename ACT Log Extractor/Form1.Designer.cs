@@ -52,8 +52,8 @@
             this.checkBox_party = new System.Windows.Forms.CheckBox();
             this.checkBox_say = new System.Windows.Forms.CheckBox();
             this.groupBox_export_settings = new System.Windows.Forms.GroupBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton_exportToSeparate = new System.Windows.Forms.RadioButton();
+            this.radioButton_exportToSingle = new System.Windows.Forms.RadioButton();
             this.button_exportHTML = new System.Windows.Forms.Button();
             this.button_exportText = new System.Windows.Forms.Button();
             this.button_refresh = new System.Windows.Forms.Button();
@@ -323,8 +323,8 @@
             // 
             // groupBox_export_settings
             // 
-            this.groupBox_export_settings.Controls.Add(this.radioButton2);
-            this.groupBox_export_settings.Controls.Add(this.radioButton1);
+            this.groupBox_export_settings.Controls.Add(this.radioButton_exportToSeparate);
+            this.groupBox_export_settings.Controls.Add(this.radioButton_exportToSingle);
             this.groupBox_export_settings.Location = new System.Drawing.Point(393, 239);
             this.groupBox_export_settings.Name = "groupBox_export_settings";
             this.groupBox_export_settings.Size = new System.Drawing.Size(138, 61);
@@ -332,27 +332,27 @@
             this.groupBox_export_settings.TabStop = false;
             this.groupBox_export_settings.Text = "Export settings";
             // 
-            // radioButton2
+            // radioButton_exportToSeparate
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(7, 40);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(103, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.Text = "One file per chat";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton_exportToSeparate.AutoSize = true;
+            this.radioButton_exportToSeparate.Location = new System.Drawing.Point(7, 40);
+            this.radioButton_exportToSeparate.Name = "radioButton_exportToSeparate";
+            this.radioButton_exportToSeparate.Size = new System.Drawing.Size(103, 17);
+            this.radioButton_exportToSeparate.TabIndex = 1;
+            this.radioButton_exportToSeparate.Text = "One file per chat";
+            this.radioButton_exportToSeparate.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // radioButton_exportToSingle
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(7, 16);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(113, 17);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Export to single file";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton_exportToSingle.AutoSize = true;
+            this.radioButton_exportToSingle.Checked = true;
+            this.radioButton_exportToSingle.Location = new System.Drawing.Point(7, 16);
+            this.radioButton_exportToSingle.Name = "radioButton_exportToSingle";
+            this.radioButton_exportToSingle.Size = new System.Drawing.Size(113, 17);
+            this.radioButton_exportToSingle.TabIndex = 0;
+            this.radioButton_exportToSingle.TabStop = true;
+            this.radioButton_exportToSingle.Text = "Export to single file";
+            this.radioButton_exportToSingle.UseVisualStyleBackColor = true;
             // 
             // button_exportHTML
             // 
@@ -436,8 +436,8 @@
         private System.Windows.Forms.CheckBox checkBox_party;
         private System.Windows.Forms.CheckBox checkBox_say;
         private System.Windows.Forms.GroupBox groupBox_export_settings;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton_exportToSeparate;
+        private System.Windows.Forms.RadioButton radioButton_exportToSingle;
         private System.Windows.Forms.Button button_exportHTML;
         private System.Windows.Forms.Button button_exportText;
         private System.Windows.Forms.Button button_refresh;
