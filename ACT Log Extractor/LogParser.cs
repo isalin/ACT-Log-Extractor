@@ -34,7 +34,7 @@ namespace ACT_Log_Extractor
             }
         }
 
-        internal void parse(string filePath, ListBox listBox_logs, RadioButton radioButton_exportToSingle, RadioButton radioButton_exportToSeparate, CheckBox checkBox_alliance, CheckBox checkBox_freeCompany, CheckBox checkBox_linkshell1, CheckBox checkBox_linkshell2, CheckBox checkBox_linkshell3, CheckBox checkBox_linkshell4, CheckBox checkBox_linkshell5, CheckBox checkBox_linkshell6, CheckBox checkBox_linkshell7, CheckBox checkBox_linkshell8, CheckBox checkBox_party, CheckBox checkBox_say, CheckBox checkBox_shout, CheckBox checkBox_tell, CheckBox checkBox_yell)
+        internal void parse(string filePath, ListBox listBox_logs, RadioButton radioButton_exportToSingle, RadioButton radioButton_exportToSeparate, CheckBox checkBox_alliance, CheckBox checkBox_freeCompany, CheckBox checkBox_linkshell1, CheckBox checkBox_linkshell2, CheckBox checkBox_linkshell3, CheckBox checkBox_linkshell4, CheckBox checkBox_linkshell5, CheckBox checkBox_linkshell6, CheckBox checkBox_linkshell7, CheckBox checkBox_linkshell8, CheckBox checkBox_party, CheckBox checkBox_say, CheckBox checkBox_shout, CheckBox checkBox_tell, CheckBox checkBox_yell, CheckBox checkBox_timestamps, CheckBox checkBox_channel, CheckBox checkBox_names)
         {
             Debug.WriteLine("Filepath: " + getFile(listBox_logs.SelectedItem.ToString()));
             var lines = File.ReadAllLines(getFile(listBox_logs.SelectedItem.ToString()));
@@ -45,7 +45,7 @@ namespace ACT_Log_Extractor
                 match = new Regex(@"00\|\d+-\d+-\d+T(?<time>\d+:\d+:\d+).+?\|(?<code>\d+)\|.+?(?<name>[A-Z].+? [A-Z].+?)[A-Z].+?\|(?<message>.+)").Match(line);
                 if (match.Success)
                 {
-                    Debug.WriteLine("PARSING: [" + match.Groups["time"].ToString() + "]" + "<" + match.Groups["name"].ToString() + ">" + match.Groups["message"].ToString());
+                    Debug.WriteLine("PARSING: " + constructLine(match, checkBox_timestamps.Checked, checkBox_channel.Checked, checkBox_names.Checked, false));
                     parseCodes(match, filePath, radioButton_exportToSeparate.Checked);
                     
                 }
@@ -56,49 +56,73 @@ namespace ACT_Log_Extractor
 
         private void parseCodes(Match match, string filePath, bool separate)
         {
-            string processedLine = constructLine(match);
-# Say
-# Party
-# Alliance
-# Yell
-# Shout
-# Free Company
-# Tell
-# Yell
-# Lindshell 1
-# Lindshell 2
-# Lindshell 3
-# Lindshell 4
-# Lindshell 5
-# Lindshell 6
-# Lindshell 7
-# Lindshell 8
+            //string processedLine = constructLine(match);
+
+            // Say
+            // Party
+            // Alliance
+            // Yell
+            // Shout
+            // Free Company
+            // Tell
+            // Yell
+            // Lindshell 1
+            // Lindshell 2
+            // Lindshell 3
+            // Lindshell 4
+            // Lindshell 5
+            // Lindshell 6
+            // Lindshell 7
+            // Lindshell 8
 
 
         }
 
-        private string constructLine(Match match, bool timestamp, bool channel, bool name)
+        private string constructLine(Match match, bool timestamp, bool channel, bool name, bool html)
         {
             string completeString = "";
-            if(timestamp)
+            if(html == true)
             {
-                completeString = "[" + match.Groups["time"].ToString() + "]";
-            }
-            if (channel)
+                //TODO
+            } else
             {
-                completeString += codeToChannel(match.Groups["code"].ToString());
+                if (timestamp)
+                {
+                    completeString = "[" + match.Groups["time"].ToString() + "]";
+                }
+                if (channel)
+                {
+                    completeString += "[" + codeToChannel(match.Groups["code"].ToString()) + "]";
+                }
+                if (name)
+                {
+                    completeString += "<" + match.Groups["name"].ToString() + ">";
+                }
+                completeString += match.Groups["message"].ToString();
             }
-            if (name)
-            {
-                completeString += "<" + match.Groups["name"].ToString() + ">";
-            }
-            completeString += match.Groups["message"].ToString()
+            
+
             return completeString;
         }
 
         private string codeToChannel(string code)
         {
-            throw new NotImplementedException();
+            if (code.Equals("0039")) return "Say";
+            if (code.Equals("0039")) return "Party";
+            if (code.Equals("0039")) return "Alliance";
+            if (code.Equals("0039")) return "Yell";
+            if (code.Equals("0039")) return "Shout";
+            if (code.Equals("0039")) return "Free Company";
+            if (code.Equals("0039")) return "Tell";
+            if (code.Equals("0039")) return "Linkshell 1";
+            if (code.Equals("0039")) return "Linkshell 2";
+            if (code.Equals("0039")) return "Linkshell 3";
+            if (code.Equals("0039")) return "Linkshell 4";
+            if (code.Equals("0039")) return "Linkshell 5";
+            if (code.Equals("0039")) return "Linkshell 6";
+            if (code.Equals("0039")) return "Linkshell 7";
+            if (code.Equals("0039")) return "Linkshell 8";
+            return null;
         }
 
         private string getDate(string file)

@@ -31,8 +31,8 @@
             this.groupBox_logs = new System.Windows.Forms.GroupBox();
             this.listBox_logs = new System.Windows.Forms.ListBox();
             this.groupBox_formatting = new System.Windows.Forms.GroupBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox_names = new System.Windows.Forms.CheckBox();
+            this.checkBox_channel = new System.Windows.Forms.CheckBox();
             this.checkBox_timestamps = new System.Windows.Forms.CheckBox();
             this.groupBox_include = new System.Windows.Forms.GroupBox();
             this.groupBox_linkshells = new System.Windows.Forms.GroupBox();
@@ -90,8 +90,8 @@
             // 
             // groupBox_formatting
             // 
-            this.groupBox_formatting.Controls.Add(this.checkBox2);
-            this.groupBox_formatting.Controls.Add(this.checkBox1);
+            this.groupBox_formatting.Controls.Add(this.checkBox_names);
+            this.groupBox_formatting.Controls.Add(this.checkBox_channel);
             this.groupBox_formatting.Controls.Add(this.checkBox_timestamps);
             this.groupBox_formatting.Location = new System.Drawing.Point(218, 239);
             this.groupBox_formatting.Name = "groupBox_formatting";
@@ -100,29 +100,29 @@
             this.groupBox_formatting.TabStop = false;
             this.groupBox_formatting.Text = "Formatting";
             // 
-            // checkBox2
+            // checkBox_names
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Checked = true;
-            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox2.Location = new System.Drawing.Point(7, 68);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(94, 17);
-            this.checkBox2.TabIndex = 2;
-            this.checkBox2.Text = "Sender names";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox_names.AutoSize = true;
+            this.checkBox_names.Checked = true;
+            this.checkBox_names.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_names.Location = new System.Drawing.Point(7, 68);
+            this.checkBox_names.Name = "checkBox_names";
+            this.checkBox_names.Size = new System.Drawing.Size(94, 17);
+            this.checkBox_names.TabIndex = 2;
+            this.checkBox_names.Text = "Sender names";
+            this.checkBox_names.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // checkBox_channel
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(7, 44);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(156, 17);
-            this.checkBox1.TabIndex = 1;
-            this.checkBox1.Text = "Message origin (e.g. \"[FC]\")";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox_channel.AutoSize = true;
+            this.checkBox_channel.Checked = true;
+            this.checkBox_channel.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_channel.Location = new System.Drawing.Point(7, 44);
+            this.checkBox_channel.Name = "checkBox_channel";
+            this.checkBox_channel.Size = new System.Drawing.Size(156, 17);
+            this.checkBox_channel.TabIndex = 1;
+            this.checkBox_channel.Text = "Message origin (e.g. \"[FC]\")";
+            this.checkBox_channel.UseVisualStyleBackColor = true;
             // 
             // checkBox_timestamps
             // 
@@ -415,8 +415,8 @@
         private System.Windows.Forms.GroupBox groupBox_logs;
         private System.Windows.Forms.ListBox listBox_logs;
         private System.Windows.Forms.GroupBox groupBox_formatting;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox_names;
+        private System.Windows.Forms.CheckBox checkBox_channel;
         private System.Windows.Forms.CheckBox checkBox_timestamps;
         private System.Windows.Forms.GroupBox groupBox_include;
         private System.Windows.Forms.GroupBox groupBox_linkshells;
