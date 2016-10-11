@@ -66,6 +66,8 @@
             // 
             // groupBox_logs
             // 
+            this.groupBox_logs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox_logs.Controls.Add(this.listBox_logs);
             this.groupBox_logs.Location = new System.Drawing.Point(12, 12);
             this.groupBox_logs.Name = "groupBox_logs";
@@ -90,6 +92,7 @@
             // 
             // groupBox_formatting
             // 
+            this.groupBox_formatting.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox_formatting.Controls.Add(this.checkBox_names);
             this.groupBox_formatting.Controls.Add(this.checkBox_channel);
             this.groupBox_formatting.Controls.Add(this.checkBox_timestamps);
@@ -138,6 +141,9 @@
             // 
             // groupBox_include
             // 
+            this.groupBox_include.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox_include.Controls.Add(this.groupBox_linkshells);
             this.groupBox_include.Controls.Add(this.checkBox_tell);
             this.groupBox_include.Controls.Add(this.checkBox_freeCompany);
@@ -155,6 +161,7 @@
             // 
             // groupBox_linkshells
             // 
+            this.groupBox_linkshells.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox_linkshells.Controls.Add(this.checkBox_linkshell4);
             this.groupBox_linkshells.Controls.Add(this.checkBox_linkshell5);
             this.groupBox_linkshells.Controls.Add(this.checkBox_linkshell8);
@@ -323,6 +330,7 @@
             // 
             // groupBox_export_settings
             // 
+            this.groupBox_export_settings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox_export_settings.Controls.Add(this.radioButton_exportToSeparate);
             this.groupBox_export_settings.Controls.Add(this.radioButton_exportToSingle);
             this.groupBox_export_settings.Location = new System.Drawing.Point(393, 239);
@@ -356,6 +364,7 @@
             // 
             // button_exportHTML
             // 
+            this.button_exportHTML.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button_exportHTML.Location = new System.Drawing.Point(451, 336);
             this.button_exportHTML.Name = "button_exportHTML";
             this.button_exportHTML.Size = new System.Drawing.Size(80, 23);
@@ -365,6 +374,7 @@
             // 
             // button_exportText
             // 
+            this.button_exportText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button_exportText.Location = new System.Drawing.Point(370, 336);
             this.button_exportText.Name = "button_exportText";
             this.button_exportText.Size = new System.Drawing.Size(75, 23);
@@ -375,6 +385,7 @@
             // 
             // button_refresh
             // 
+            this.button_refresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button_refresh.Location = new System.Drawing.Point(218, 336);
             this.button_refresh.Name = "button_refresh";
             this.button_refresh.Size = new System.Drawing.Size(75, 23);
@@ -395,6 +406,7 @@
             this.Controls.Add(this.groupBox_include);
             this.Controls.Add(this.groupBox_formatting);
             this.Controls.Add(this.groupBox_logs);
+            this.MinimumSize = new System.Drawing.Size(559, 409);
             this.Name = "Form1";
             this.Text = "ACT Log Extractor";
             this.groupBox_logs.ResumeLayout(false);
