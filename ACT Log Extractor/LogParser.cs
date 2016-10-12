@@ -107,21 +107,21 @@ namespace ACT_Log_Extractor
 
         private string codeToChannel(string code)
         {
-            if (code.Equals("0039")) return "Say";
-            if (code.Equals("0039")) return "Party";
-            if (code.Equals("0039")) return "Alliance";
-            if (code.Equals("0039")) return "Yell";
-            if (code.Equals("0039")) return "Shout";
-            if (code.Equals("0039")) return "Free Company";
+            if (code.Equals("000a")) return "Say";
+            if (code.Equals("000e")) return "Party";
+            if (code.Equals("?")) return "Alliance";
+            if (code.Equals("001e")) return "Yell";
+            if (code.Equals("000b")) return "Shout";
+            if (code.Equals("0018")) return "Free Company";
             if (code.Equals("0039")) return "Tell";
-            if (code.Equals("0039")) return "Linkshell 1";
-            if (code.Equals("0039")) return "Linkshell 2";
-            if (code.Equals("0039")) return "Linkshell 3";
-            if (code.Equals("0039")) return "Linkshell 4";
-            if (code.Equals("0039")) return "Linkshell 5";
-            if (code.Equals("0039")) return "Linkshell 6";
-            if (code.Equals("0039")) return "Linkshell 7";
-            if (code.Equals("0039")) return "Linkshell 8";
+            if (code.Equals("0010")) return "Linkshell 1";
+            if (code.Equals("0011")) return "Linkshell 2";
+            if (code.Equals("0012")) return "Linkshell 3";
+            if (code.Equals("0013")) return "Linkshell 4";
+            if (code.Equals("0014")) return "Linkshell 5";
+            if (code.Equals("0015")) return "Linkshell 6";
+            if (code.Equals("0016")) return "Linkshell 7";
+            if (code.Equals("0017")) return "Linkshell 8";
             return null;
         }
 
