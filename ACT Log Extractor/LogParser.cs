@@ -109,7 +109,7 @@ namespace ACT_Log_Extractor
         {
             if (code.Equals("000a")) return "Say";
             if (code.Equals("000e")) return "Party";
-            if (code.Equals("?")) return "Alliance";
+            if (code.Equals("000f")) return "Alliance";
             if (code.Equals("001e")) return "Yell";
             if (code.Equals("000b")) return "Shout";
             if (code.Equals("0018")) return "Free Company";
