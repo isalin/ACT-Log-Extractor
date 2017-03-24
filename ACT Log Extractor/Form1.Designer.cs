@@ -30,6 +30,7 @@
         {
             this.groupBox_logs = new System.Windows.Forms.GroupBox();
             this.label_size = new System.Windows.Forms.Label();
+            this.button_refresh = new System.Windows.Forms.Button();
             this.listBox_logs = new System.Windows.Forms.ListBox();
             this.groupBox_formatting = new System.Windows.Forms.GroupBox();
             this.checkBox_names = new System.Windows.Forms.CheckBox();
@@ -54,17 +55,16 @@
             this.checkBox_say = new System.Windows.Forms.CheckBox();
             this.button_exportHTML = new System.Windows.Forms.Button();
             this.button_exportText = new System.Windows.Forms.Button();
-            this.button_refresh = new System.Windows.Forms.Button();
             this.groupBox_conversation = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.numericUpDown_secondsBeforeBreak = new System.Windows.Forms.NumericUpDown();
+            this.checkBox_conversations = new System.Windows.Forms.CheckBox();
             this.groupBox_logs.SuspendLayout();
             this.groupBox_formatting.SuspendLayout();
             this.groupBox_include.SuspendLayout();
             this.groupBox_linkshells.SuspendLayout();
             this.groupBox_conversation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_secondsBeforeBreak)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox_logs
@@ -87,9 +87,20 @@
             this.label_size.AutoSize = true;
             this.label_size.Location = new System.Drawing.Point(6, 356);
             this.label_size.Name = "label_size";
-            this.label_size.Size = new System.Drawing.Size(69, 13);
+            this.label_size.Size = new System.Drawing.Size(58, 13);
             this.label_size.TabIndex = 2;
-            this.label_size.Text = "Space: 0 MB";
+            this.label_size.Text = "Size: 0 MB";
+            // 
+            // button_refresh
+            // 
+            this.button_refresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button_refresh.Location = new System.Drawing.Point(119, 351);
+            this.button_refresh.Name = "button_refresh";
+            this.button_refresh.Size = new System.Drawing.Size(75, 23);
+            this.button_refresh.TabIndex = 5;
+            this.button_refresh.Text = "Refresh";
+            this.button_refresh.UseVisualStyleBackColor = true;
+            this.button_refresh.Click += new System.EventHandler(this.button_refresh_Click);
             // 
             // listBox_logs
             // 
@@ -367,23 +378,12 @@
             this.button_exportText.UseVisualStyleBackColor = true;
             this.button_exportText.Click += new System.EventHandler(this.button_exportText_Click);
             // 
-            // button_refresh
-            // 
-            this.button_refresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button_refresh.Location = new System.Drawing.Point(119, 351);
-            this.button_refresh.Name = "button_refresh";
-            this.button_refresh.Size = new System.Drawing.Size(75, 23);
-            this.button_refresh.TabIndex = 5;
-            this.button_refresh.Text = "Refresh";
-            this.button_refresh.UseVisualStyleBackColor = true;
-            this.button_refresh.Click += new System.EventHandler(this.button_refresh_Click);
-            // 
             // groupBox_conversation
             // 
             this.groupBox_conversation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox_conversation.Controls.Add(this.label1);
-            this.groupBox_conversation.Controls.Add(this.numericUpDown1);
-            this.groupBox_conversation.Controls.Add(this.checkBox1);
+            this.groupBox_conversation.Controls.Add(this.numericUpDown_secondsBeforeBreak);
+            this.groupBox_conversation.Controls.Add(this.checkBox_conversations);
             this.groupBox_conversation.Location = new System.Drawing.Point(394, 247);
             this.groupBox_conversation.Name = "groupBox_conversation";
             this.groupBox_conversation.Size = new System.Drawing.Size(161, 116);
@@ -401,24 +401,25 @@
             this.label1.Text = "Seconds before break: ";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // numericUpDown1
+            // numericUpDown_secondsBeforeBreak
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(13, 84);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.ReadOnly = true;
-            this.numericUpDown1.Size = new System.Drawing.Size(111, 20);
-            this.numericUpDown1.TabIndex = 1;
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            this.numericUpDown_secondsBeforeBreak.Enabled = false;
+            this.numericUpDown_secondsBeforeBreak.Location = new System.Drawing.Point(13, 84);
+            this.numericUpDown_secondsBeforeBreak.Name = "numericUpDown_secondsBeforeBreak";
+            this.numericUpDown_secondsBeforeBreak.Size = new System.Drawing.Size(111, 20);
+            this.numericUpDown_secondsBeforeBreak.TabIndex = 1;
+            this.numericUpDown_secondsBeforeBreak.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
-            // checkBox1
+            // checkBox_conversations
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(6, 19);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(153, 30);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "Add blank lines to indicate \r\nbreaks in conversation";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox_conversations.AutoSize = true;
+            this.checkBox_conversations.Location = new System.Drawing.Point(6, 19);
+            this.checkBox_conversations.Name = "checkBox_conversations";
+            this.checkBox_conversations.Size = new System.Drawing.Size(153, 30);
+            this.checkBox_conversations.TabIndex = 0;
+            this.checkBox_conversations.Text = "Add blank lines to indicate \r\nbreaks in conversation";
+            this.checkBox_conversations.UseVisualStyleBackColor = true;
+            this.checkBox_conversations.CheckedChanged += new System.EventHandler(this.checkBox_conversations_CheckedChanged);
             // 
             // MainForm
             // 
@@ -446,7 +447,7 @@
             this.groupBox_linkshells.PerformLayout();
             this.groupBox_conversation.ResumeLayout(false);
             this.groupBox_conversation.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_secondsBeforeBreak)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -482,8 +483,8 @@
         public System.Windows.Forms.Label label_size;
         private System.Windows.Forms.GroupBox groupBox_conversation;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.NumericUpDown numericUpDown_secondsBeforeBreak;
+        private System.Windows.Forms.CheckBox checkBox_conversations;
     }
 }
 

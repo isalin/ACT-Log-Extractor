@@ -82,5 +82,10 @@ namespace ACT_Log_Extractor
         {
 
         }
+
+        private void checkBox_conversations_CheckedChanged(object sender, EventArgs e)
+        {
+            numericUpDown_secondsBeforeBreak.Enabled = !numericUpDown_secondsBeforeBreak.Enabled;
+        }
     }
 }

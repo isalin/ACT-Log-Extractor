@@ -80,7 +80,6 @@ namespace ACT_Log_Extractor
                         fileText += outputLine;
 #endif
                     }
-                    parseCodes(match, filePath, form.radioButton_exportToSeparate.Checked);
 
                 }
 
