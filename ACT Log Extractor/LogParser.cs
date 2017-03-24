@@ -63,8 +63,8 @@ namespace ACT_Log_Extractor
             Debug.WriteLine("Number of lines:" + lines.Length);
             foreach (var line in lines)
             {
-                if(useOldRegex) match = new Regex(@"00\|\d+-\d+-\d+T(?<time>\d+:\d+:\d+).+?\|(?<code>\d+)\|.+?(?<name>[A-Z].+? [A-Z].+?)[A-Z].+?\|(?<message>.+)").Match(line);
-                else match = new Regex(@"00\|\d+-\d+-\d+T(?<time>\d+:\d+:\d+).+?\|(?<code>\d+)\|.+?(?<name>[A-Z].+? [A-Z].+?)[A-Z].+?\|(?<message>.+)\|.+").Match(line);
+                if(useOldRegex) match = new Regex(@"00\|\d+-\d+-\d+T(?<time>\d+:\d+:\d+).+?\|(?<code>\d+)\|.*?(?<name>[A-Z][A-z']+? [A-z']+).*?\|(?<message>.+)").Match(line);
+                else match = new Regex(@"00\|\d+-\d+-\d+T(?<time>\d+:\d+:\d+).+?\|(?<code>\d+)\|.*?(?<name>[A-Z][A-z']+? [A-z']+).*?\|(?<message>.+)\|[^\|]+").Match(line);
                 if (match.Success)
                 {
                     String outputLine = constructLine(match, form, html);
