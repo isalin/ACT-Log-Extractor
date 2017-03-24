@@ -1,6 +1,6 @@
 ﻿namespace ACT_Log_Extractor
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -394,7 +394,7 @@
             this.button_refresh.UseVisualStyleBackColor = true;
             this.button_refresh.Click += new System.EventHandler(this.button_refresh_Click);
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -407,7 +407,7 @@
             this.Controls.Add(this.groupBox_formatting);
             this.Controls.Add(this.groupBox_logs);
             this.MinimumSize = new System.Drawing.Size(559, 409);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "ACT Log Extractor";
             this.groupBox_logs.ResumeLayout(false);
             this.groupBox_formatting.ResumeLayout(false);
@@ -425,34 +425,34 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox_logs;
-        private System.Windows.Forms.ListBox listBox_logs;
         private System.Windows.Forms.GroupBox groupBox_formatting;
-        private System.Windows.Forms.CheckBox checkBox_names;
-        private System.Windows.Forms.CheckBox checkBox_channel;
-        private System.Windows.Forms.CheckBox checkBox_timestamps;
         private System.Windows.Forms.GroupBox groupBox_include;
         private System.Windows.Forms.GroupBox groupBox_linkshells;
-        private System.Windows.Forms.CheckBox checkBox_linkshell4;
-        private System.Windows.Forms.CheckBox checkBox_linkshell5;
-        private System.Windows.Forms.CheckBox checkBox_linkshell8;
-        private System.Windows.Forms.CheckBox checkBox_linkshell7;
-        private System.Windows.Forms.CheckBox checkBox_linkshell6;
-        private System.Windows.Forms.CheckBox checkBox_linkshell3;
-        private System.Windows.Forms.CheckBox checkBox_linkshell2;
-        private System.Windows.Forms.CheckBox checkBox_linkshell1;
-        private System.Windows.Forms.CheckBox checkBox_tell;
-        private System.Windows.Forms.CheckBox checkBox_freeCompany;
-        private System.Windows.Forms.CheckBox checkBox_shout;
-        private System.Windows.Forms.CheckBox checkBox_yell;
-        private System.Windows.Forms.CheckBox checkBox_alliance;
-        private System.Windows.Forms.CheckBox checkBox_party;
-        private System.Windows.Forms.CheckBox checkBox_say;
         private System.Windows.Forms.GroupBox groupBox_export_settings;
-        private System.Windows.Forms.RadioButton radioButton_exportToSeparate;
-        private System.Windows.Forms.RadioButton radioButton_exportToSingle;
         private System.Windows.Forms.Button button_exportHTML;
         private System.Windows.Forms.Button button_exportText;
         private System.Windows.Forms.Button button_refresh;
+        public System.Windows.Forms.ListBox listBox_logs;
+        public System.Windows.Forms.CheckBox checkBox_names;
+        public System.Windows.Forms.CheckBox checkBox_channel;
+        public System.Windows.Forms.CheckBox checkBox_timestamps;
+        public System.Windows.Forms.CheckBox checkBox_linkshell4;
+        public System.Windows.Forms.CheckBox checkBox_linkshell5;
+        public System.Windows.Forms.CheckBox checkBox_linkshell8;
+        public System.Windows.Forms.CheckBox checkBox_linkshell7;
+        public System.Windows.Forms.CheckBox checkBox_linkshell6;
+        public System.Windows.Forms.CheckBox checkBox_linkshell3;
+        public System.Windows.Forms.CheckBox checkBox_linkshell2;
+        public System.Windows.Forms.CheckBox checkBox_linkshell1;
+        public System.Windows.Forms.CheckBox checkBox_tell;
+        public System.Windows.Forms.CheckBox checkBox_freeCompany;
+        public System.Windows.Forms.CheckBox checkBox_shout;
+        public System.Windows.Forms.CheckBox checkBox_yell;
+        public System.Windows.Forms.CheckBox checkBox_alliance;
+        public System.Windows.Forms.CheckBox checkBox_party;
+        public System.Windows.Forms.CheckBox checkBox_say;
+        public System.Windows.Forms.RadioButton radioButton_exportToSeparate;
+        public System.Windows.Forms.RadioButton radioButton_exportToSingle;
     }
 }
 

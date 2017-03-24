@@ -34,10 +34,12 @@ namespace ACT_Log_Extractor
             }
         }
 
-        internal void parse(string filePath, ListBox listBox_logs, RadioButton radioButton_exportToSingle, RadioButton radioButton_exportToSeparate, CheckBox checkBox_alliance, CheckBox checkBox_freeCompany, CheckBox checkBox_linkshell1, CheckBox checkBox_linkshell2, CheckBox checkBox_linkshell3, CheckBox checkBox_linkshell4, CheckBox checkBox_linkshell5, CheckBox checkBox_linkshell6, CheckBox checkBox_linkshell7, CheckBox checkBox_linkshell8, CheckBox checkBox_party, CheckBox checkBox_say, CheckBox checkBox_shout, CheckBox checkBox_tell, CheckBox checkBox_yell, CheckBox checkBox_timestamps, CheckBox checkBox_channel, CheckBox checkBox_names)
+        internal void parse(string filePath, MainForm form, bool html)
         {
-            Debug.WriteLine("Filepath: " + getFile(listBox_logs.SelectedItem.ToString()));
-            var lines = File.ReadAllLines(getFile(listBox_logs.SelectedItem.ToString()));
+            Debug.WriteLine("Filepath: " + getFile(form.listBox_logs.SelectedItem.ToString()));
+            var lines = File.ReadAllLines(getFile(form.listBox_logs.SelectedItem.ToString()));
+
+            Debug.WriteLine("File creation date: " + File.GetCreationTime(getFile(form.listBox_logs.SelectedItem.ToString())).ToFileTimeUtc());
             Match match;
             Debug.WriteLine("Number of lines:" + lines.Length);
             foreach (var line in lines)
@@ -45,12 +47,18 @@ namespace ACT_Log_Extractor
                 match = new Regex(@"00\|\d+-\d+-\d+T(?<time>\d+:\d+:\d+).+?\|(?<code>\d+)\|.+?(?<name>[A-Z].+? [A-Z].+?)[A-Z].+?\|(?<message>.+)").Match(line);
                 if (match.Success)
                 {
-                    Debug.WriteLine("PARSING: " + constructLine(match, checkBox_timestamps.Checked, checkBox_channel.Checked, checkBox_names.Checked, false));
-                    parseCodes(match, filePath, radioButton_exportToSeparate.Checked);
+                    String outputLine = constructLine(match, form, html);
+
+                    if (!outputLine.Equals(""))
+                    {
+                        Debug.WriteLine("PARSING: " + outputLine);
+                    }
+                    parseCodes(match, filePath, form.radioButton_exportToSeparate.Checked);
                     
                 }
 
             }
+            Debug.WriteLine("Parse complete.");
 
         }
 
@@ -78,25 +86,40 @@ namespace ACT_Log_Extractor
 
         }
 
-        private string constructLine(Match match, bool timestamp, bool channel, bool name, bool html)
+        private string constructLine(Match match, MainForm form, bool html)
         {
             string completeString = "";
-            if(html == true)
+
+
+            if ((form.checkBox_alliance.Checked && codeToChannel(match.Groups["code"].ToString()).Equals("Alliance")) ||
+                (form.checkBox_freeCompany.Checked && codeToChannel(match.Groups["code"].ToString()).Equals("Free Company")) ||
+                (form.checkBox_linkshell1.Checked && codeToChannel(match.Groups["code"].ToString()).Equals("Linkshell 1")) ||
+                (form.checkBox_linkshell2.Checked && codeToChannel(match.Groups["code"].ToString()).Equals("Linkshell 2")) ||
+                (form.checkBox_linkshell3.Checked && codeToChannel(match.Groups["code"].ToString()).Equals("Linkshell 3")) ||
+                (form.checkBox_linkshell4.Checked && codeToChannel(match.Groups["code"].ToString()).Equals("Linkshell 4")) ||
+                (form.checkBox_linkshell5.Checked && codeToChannel(match.Groups["code"].ToString()).Equals("Linkshell 5")) ||
+                (form.checkBox_linkshell6.Checked && codeToChannel(match.Groups["code"].ToString()).Equals("Linkshell 6")) ||
+                (form.checkBox_linkshell7.Checked && codeToChannel(match.Groups["code"].ToString()).Equals("Linkshell 7")) ||
+                (form.checkBox_linkshell8.Checked && codeToChannel(match.Groups["code"].ToString()).Equals("Linkshell 8")) ||
+                (form.checkBox_party.Checked && codeToChannel(match.Groups["code"].ToString()).Equals("Party")) ||
+                (form.checkBox_say.Checked && codeToChannel(match.Groups["code"].ToString()).Equals("Say")) ||
+                (form.checkBox_shout.Checked && codeToChannel(match.Groups["code"].ToString()).Equals("Shout")) ||
+                (form.checkBox_tell.Checked && codeToChannel(match.Groups["code"].ToString()).Equals("Tell")) ||
+                (form.checkBox_yell.Checked && codeToChannel(match.Groups["code"].ToString()).Equals("Yell"))
+                )
             {
-                //TODO
-            } else
-            {
-                if (timestamp)
+
+                if (form.checkBox_timestamps.Checked)
                 {
-                    completeString = "[" + match.Groups["time"].ToString() + "]";
+                    completeString += "[" + match.Groups["time"].ToString() + "]";
                 }
-                if (channel)
+                if (form.checkBox_channel.Checked)
                 {
                     completeString += "[" + codeToChannel(match.Groups["code"].ToString()) + "]";
                 }
-                if (name)
+                if (form.checkBox_names.Checked)
                 {
-                    completeString += "<" + match.Groups["name"].ToString() + ">";
+                    completeString += "<" + match.Groups["name"].ToString() + "> ";
                 }
                 completeString += match.Groups["message"].ToString();
             }
@@ -122,7 +145,7 @@ namespace ACT_Log_Extractor
             if (code.Equals("0015")) return "Linkshell 6";
             if (code.Equals("0016")) return "Linkshell 7";
             if (code.Equals("0017")) return "Linkshell 8";
-            return null;
+            return "";
         }
 
         private string getDate(string file)

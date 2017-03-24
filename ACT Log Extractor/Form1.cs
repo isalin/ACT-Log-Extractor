@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace ACT_Log_Extractor
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         LogParser log;
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             log = new LogParser(listBox_logs);
@@ -29,7 +29,7 @@ namespace ACT_Log_Extractor
         {
             if (boxesChecked())
             {
-                log.parse("filepath", listBox_logs, radioButton_exportToSingle, radioButton_exportToSeparate, checkBox_alliance, checkBox_freeCompany, checkBox_linkshell1, checkBox_linkshell2, checkBox_linkshell3, checkBox_linkshell4, checkBox_linkshell5, checkBox_linkshell6, checkBox_linkshell7, checkBox_linkshell8, checkBox_party, checkBox_say, checkBox_shout, checkBox_tell, checkBox_yell, checkBox_timestamps, checkBox_channel, checkBox_names);
+                log.parse("filepath", this, false);
             }
             else
             {
