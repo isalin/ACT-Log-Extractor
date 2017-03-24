@@ -36,6 +36,12 @@ namespace ACT_Log_Extractor
 
         internal void parse(string filePath, MainForm form, bool html)
         {
+            if (form.listBox_logs.SelectedItem == null)
+            {
+                MessageBox.Show("No log file selected.", "Error");
+                return;
+            }
+
             Debug.WriteLine("Filepath: " + getFile(form.listBox_logs.SelectedItem.ToString()));
             var lines = File.ReadAllLines(getFile(form.listBox_logs.SelectedItem.ToString()));
 
