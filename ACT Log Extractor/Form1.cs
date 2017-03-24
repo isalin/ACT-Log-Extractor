@@ -17,12 +17,12 @@ namespace ACT_Log_Extractor
         public MainForm()
         {
             InitializeComponent();
-            log = new LogParser(listBox_logs);
+            log = new LogParser(this);
         }
 
         private void button_refresh_Click(object sender, EventArgs e)
         {
-            log.refresh(listBox_logs);
+            log.refresh(this);
         }
 
         private void button_exportText_Click(object sender, EventArgs e)

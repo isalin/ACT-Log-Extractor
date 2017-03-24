@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox_logs = new System.Windows.Forms.GroupBox();
+            this.button_delete = new System.Windows.Forms.Button();
+            this.label_size = new System.Windows.Forms.Label();
             this.listBox_logs = new System.Windows.Forms.ListBox();
             this.groupBox_formatting = new System.Windows.Forms.GroupBox();
             this.checkBox_names = new System.Windows.Forms.CheckBox();
@@ -68,6 +70,8 @@
             // 
             this.groupBox_logs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox_logs.Controls.Add(this.button_delete);
+            this.groupBox_logs.Controls.Add(this.label_size);
             this.groupBox_logs.Controls.Add(this.listBox_logs);
             this.groupBox_logs.Location = new System.Drawing.Point(12, 12);
             this.groupBox_logs.Name = "groupBox_logs";
@@ -76,9 +80,31 @@
             this.groupBox_logs.TabStop = false;
             this.groupBox_logs.Text = "Logs";
             // 
+            // button_delete
+            // 
+            this.button_delete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_delete.Location = new System.Drawing.Point(113, 313);
+            this.button_delete.Name = "button_delete";
+            this.button_delete.Size = new System.Drawing.Size(81, 23);
+            this.button_delete.TabIndex = 3;
+            this.button_delete.Text = "Delete all logs";
+            this.button_delete.UseVisualStyleBackColor = true;
+            // 
+            // label_size
+            // 
+            this.label_size.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label_size.AutoSize = true;
+            this.label_size.Location = new System.Drawing.Point(6, 318);
+            this.label_size.Name = "label_size";
+            this.label_size.Size = new System.Drawing.Size(69, 13);
+            this.label_size.TabIndex = 2;
+            this.label_size.Text = "Space: 0 MB";
+            // 
             // listBox_logs
             // 
-            this.listBox_logs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBox_logs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listBox_logs.FormattingEnabled = true;
             this.listBox_logs.Items.AddRange(new object[] {
             "test 1",
@@ -87,7 +113,7 @@
             this.listBox_logs.Location = new System.Drawing.Point(3, 16);
             this.listBox_logs.Name = "listBox_logs";
             this.listBox_logs.ScrollAlwaysVisible = true;
-            this.listBox_logs.Size = new System.Drawing.Size(194, 328);
+            this.listBox_logs.Size = new System.Drawing.Size(194, 290);
             this.listBox_logs.TabIndex = 1;
             // 
             // groupBox_formatting
@@ -410,6 +436,7 @@
             this.Name = "MainForm";
             this.Text = "ACT Log Extractor";
             this.groupBox_logs.ResumeLayout(false);
+            this.groupBox_logs.PerformLayout();
             this.groupBox_formatting.ResumeLayout(false);
             this.groupBox_formatting.PerformLayout();
             this.groupBox_include.ResumeLayout(false);
@@ -453,6 +480,8 @@
         public System.Windows.Forms.CheckBox checkBox_say;
         public System.Windows.Forms.RadioButton radioButton_exportToSeparate;
         public System.Windows.Forms.RadioButton radioButton_exportToSingle;
+        private System.Windows.Forms.Button button_delete;
+        public System.Windows.Forms.Label label_size;
     }
 }
 

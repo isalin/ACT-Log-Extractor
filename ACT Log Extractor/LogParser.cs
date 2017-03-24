@@ -12,26 +12,31 @@ namespace ACT_Log_Extractor
 
         List<Tuple<string, string>> list = new List<Tuple<string, string>>();
 
-        public LogParser(ListBox listBox_logs)
+        public LogParser(MainForm form)
         {
-            refresh(listBox_logs);            
+            refresh(form);            
         }
 
-        public void refresh(ListBox listBox_logs)
+        public void refresh(MainForm form)
         {
             Debug.WriteLine("Path: " + getLogDirPath());
 
             string[] files = Directory.GetFiles(getLogDirPath(), "*.log", SearchOption.AllDirectories);
 
-            listBox_logs.Items.Clear();
+            form.listBox_logs.Items.Clear();
+
+            long size = 0;
 
             foreach (string file in files)
             {
                 Debug.WriteLine("Adding item: " + getDate(file));
                 string displayName = getDate(file);
                 list.Add(new Tuple<string, string>(displayName, file));
-                listBox_logs.Items.Add(getDate(file));
+                form.listBox_logs.Items.Add(getDate(file));
+                size += new System.IO.FileInfo(file).Length;
             }
+
+            form.label_size.Text = "Total size: " + (size/(1024*1024)).ToString() + " MB";
         }
 
         internal void parse(string filePath, MainForm form, bool html)
@@ -45,12 +50,21 @@ namespace ACT_Log_Extractor
             Debug.WriteLine("Filepath: " + getFile(form.listBox_logs.SelectedItem.ToString()));
             var lines = File.ReadAllLines(getFile(form.listBox_logs.SelectedItem.ToString()));
 
-            Debug.WriteLine("File creation date: " + File.GetCreationTime(getFile(form.listBox_logs.SelectedItem.ToString())).ToFileTimeUtc());
+            bool useOldRegex = false;
+            Debug.WriteLine("File creation date: " + ConvertToUnixTime(File.GetCreationTime(getFile(form.listBox_logs.SelectedItem.ToString()))));
+            if(ConvertToUnixTime(File.GetLastWriteTime(getFile(form.listBox_logs.SelectedItem.ToString()))) < 1484136000)
+            {
+                useOldRegex = true;
+                Debug.WriteLine("Using old regex");
+            }
+
+
             Match match;
             Debug.WriteLine("Number of lines:" + lines.Length);
             foreach (var line in lines)
             {
-                match = new Regex(@"00\|\d+-\d+-\d+T(?<time>\d+:\d+:\d+).+?\|(?<code>\d+)\|.+?(?<name>[A-Z].+? [A-Z].+?)[A-Z].+?\|(?<message>.+)").Match(line);
+                if(useOldRegex) match = new Regex(@"00\|\d+-\d+-\d+T(?<time>\d+:\d+:\d+).+?\|(?<code>\d+)\|.+?(?<name>[A-Z].+? [A-Z].+?)[A-Z].+?\|(?<message>.+)").Match(line);
+                else match = new Regex(@"00\|\d+-\d+-\d+T(?<time>\d+:\d+:\d+).+?\|(?<code>\d+)\|.+?(?<name>[A-Z].+? [A-Z].+?)[A-Z].+?\|(?<message>.+)\|.+").Match(line);
                 if (match.Success)
                 {
                     String outputLine = constructLine(match, form, html);
@@ -176,6 +190,12 @@ namespace ACT_Log_Extractor
         private string getLogDirPath()
         {
             return Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Advanced Combat Tracker\FFXIVLogs";
+        }
+
+        public static long ConvertToUnixTime(DateTime input)
+        {
+            DateTime t = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            return (long) (input - t).TotalSeconds;
         }
     }
 }
