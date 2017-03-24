@@ -55,7 +55,7 @@ namespace ACT_Log_Extractor
             if(ConvertToUnixTime(File.GetLastWriteTime(getFile(form.listBox_logs.SelectedItem.ToString()))) < 1484136000)
             {
                 useOldRegex = true;
-                Debug.WriteLine("Using old regex");
+                Debug.WriteLine("Using old regex.");
             }
 
 
@@ -71,7 +71,7 @@ namespace ACT_Log_Extractor
 
                     if (!outputLine.Equals(""))
                     {
-                        Debug.WriteLine("PARSING: " + outputLine);
+                        Debug.WriteLine("LINE: " + outputLine);
                     }
                     parseCodes(match, filePath, form.radioButton_exportToSeparate.Checked);
                     
@@ -165,6 +165,7 @@ namespace ACT_Log_Extractor
             if (code.Equals("0015")) return "Linkshell 6";
             if (code.Equals("0016")) return "Linkshell 7";
             if (code.Equals("0017")) return "Linkshell 8";
+            //TODO Add mentor chat
             return "";
         }
 
