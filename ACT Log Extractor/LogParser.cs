@@ -14,7 +14,7 @@ namespace ACT_Log_Extractor
 
         public LogParser(MainForm form)
         {
-            refresh(form);            
+            refresh(form);
         }
 
         public void refresh(MainForm form)
@@ -36,7 +36,7 @@ namespace ACT_Log_Extractor
                 size += new System.IO.FileInfo(file).Length;
             }
 
-            form.label_size.Text = "Total size: " + (size/(1024*1024)).ToString() + " MB";
+            form.label_size.Text = "Total size: " + (size / (1024 * 1024)).ToString() + " MB";
         }
 
         internal void parse(string filePath, MainForm form, bool html)
@@ -52,7 +52,7 @@ namespace ACT_Log_Extractor
 
             bool useOldRegex = false;
             Debug.WriteLine("File creation date: " + ConvertToUnixTime(File.GetCreationTime(getFile(form.listBox_logs.SelectedItem.ToString()))));
-            if(ConvertToUnixTime(File.GetLastWriteTime(getFile(form.listBox_logs.SelectedItem.ToString()))) < 1484136000)
+            if (ConvertToUnixTime(File.GetLastWriteTime(getFile(form.listBox_logs.SelectedItem.ToString()))) < 1484136000)
             {
                 useOldRegex = true;
                 Debug.WriteLine("Using old regex.");
@@ -61,9 +61,12 @@ namespace ACT_Log_Extractor
 
             Match match;
             Debug.WriteLine("Number of lines:" + lines.Length);
+
+            String fileText = "";
+
             foreach (var line in lines)
             {
-                if(useOldRegex) match = new Regex(@"00\|\d+-\d+-\d+T(?<time>\d+:\d+:\d+).+?\|(?<code>\d+)\|.*?(?<name>[A-Z][A-z']+? [A-z']+).*?\|(?<message>.+)").Match(line);
+                if (useOldRegex) match = new Regex(@"00\|\d+-\d+-\d+T(?<time>\d+:\d+:\d+).+?\|(?<code>\d+)\|.*?(?<name>[A-Z][A-z']+? [A-z']+).*?\|(?<message>.+)").Match(line);
                 else match = new Regex(@"00\|\d+-\d+-\d+T(?<time>\d+:\d+:\d+).+?\|(?<code>\d+)\|.*?(?<name>[A-Z][A-z']+? [A-z']+).*?\|(?<message>.+)\|[^\|]+").Match(line);
                 if (match.Success)
                 {
@@ -71,15 +74,21 @@ namespace ACT_Log_Extractor
 
                     if (!outputLine.Equals(""))
                     {
+#if DEBUG
                         Debug.WriteLine("LINE: " + outputLine);
+#else
+                        fileText += outputLine;
+#endif
                     }
                     parseCodes(match, filePath, form.radioButton_exportToSeparate.Checked);
-                    
+
                 }
 
             }
             Debug.WriteLine("Parse complete.");
-
+#if Release
+            saveFile(fileText);
+#endif
         }
 
         private void parseCodes(Match match, string filePath, bool separate)
@@ -128,6 +137,12 @@ namespace ACT_Log_Extractor
                 (form.checkBox_yell.Checked && codeToChannel(match.Groups["code"].ToString()).Equals("Yell"))
                 )
             {
+                String color;
+                if (html)
+                {
+                    color = String.Format("{0,6:X}", ((0xeeeeee & match.Groups["name"].ToString().GetHashCode())));
+                    completeString += "<font color=\"" + color + "\">";
+                }
 
                 if (form.checkBox_timestamps.Checked)
                 {
@@ -139,11 +154,14 @@ namespace ACT_Log_Extractor
                 }
                 if (form.checkBox_names.Checked)
                 {
+                    if(html) completeString += "&lt;" + match.Groups["name"].ToString() + "&gt; ";
+
                     completeString += "<" + match.Groups["name"].ToString() + "> ";
                 }
                 completeString += match.Groups["message"].ToString();
+                if(html) completeString += "</font> <br>";
             }
-            
+
 
             return completeString;
         }
@@ -196,7 +214,7 @@ namespace ACT_Log_Extractor
         public static long ConvertToUnixTime(DateTime input)
         {
             DateTime t = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-            return (long) (input - t).TotalSeconds;
+            return (long)(input - t).TotalSeconds;
         }
     }
 }

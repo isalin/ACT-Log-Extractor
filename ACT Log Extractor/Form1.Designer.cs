@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.groupBox_logs = new System.Windows.Forms.GroupBox();
-            this.button_delete = new System.Windows.Forms.Button();
             this.label_size = new System.Windows.Forms.Label();
             this.listBox_logs = new System.Windows.Forms.ListBox();
             this.groupBox_formatting = new System.Windows.Forms.GroupBox();
@@ -53,48 +52,40 @@
             this.checkBox_alliance = new System.Windows.Forms.CheckBox();
             this.checkBox_party = new System.Windows.Forms.CheckBox();
             this.checkBox_say = new System.Windows.Forms.CheckBox();
-            this.groupBox_export_settings = new System.Windows.Forms.GroupBox();
-            this.radioButton_exportToSeparate = new System.Windows.Forms.RadioButton();
-            this.radioButton_exportToSingle = new System.Windows.Forms.RadioButton();
             this.button_exportHTML = new System.Windows.Forms.Button();
             this.button_exportText = new System.Windows.Forms.Button();
             this.button_refresh = new System.Windows.Forms.Button();
+            this.groupBox_conversation = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox_logs.SuspendLayout();
             this.groupBox_formatting.SuspendLayout();
             this.groupBox_include.SuspendLayout();
             this.groupBox_linkshells.SuspendLayout();
-            this.groupBox_export_settings.SuspendLayout();
+            this.groupBox_conversation.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox_logs
             // 
             this.groupBox_logs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox_logs.Controls.Add(this.button_delete);
             this.groupBox_logs.Controls.Add(this.label_size);
+            this.groupBox_logs.Controls.Add(this.button_refresh);
             this.groupBox_logs.Controls.Add(this.listBox_logs);
             this.groupBox_logs.Location = new System.Drawing.Point(12, 12);
             this.groupBox_logs.Name = "groupBox_logs";
-            this.groupBox_logs.Size = new System.Drawing.Size(200, 347);
+            this.groupBox_logs.Size = new System.Drawing.Size(200, 380);
             this.groupBox_logs.TabIndex = 0;
             this.groupBox_logs.TabStop = false;
             this.groupBox_logs.Text = "Logs";
-            // 
-            // button_delete
-            // 
-            this.button_delete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_delete.Location = new System.Drawing.Point(113, 313);
-            this.button_delete.Name = "button_delete";
-            this.button_delete.Size = new System.Drawing.Size(81, 23);
-            this.button_delete.TabIndex = 3;
-            this.button_delete.Text = "Delete all logs";
-            this.button_delete.UseVisualStyleBackColor = true;
             // 
             // label_size
             // 
             this.label_size.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label_size.AutoSize = true;
-            this.label_size.Location = new System.Drawing.Point(6, 318);
+            this.label_size.Location = new System.Drawing.Point(6, 356);
             this.label_size.Name = "label_size";
             this.label_size.Size = new System.Drawing.Size(69, 13);
             this.label_size.TabIndex = 2;
@@ -113,7 +104,7 @@
             this.listBox_logs.Location = new System.Drawing.Point(3, 16);
             this.listBox_logs.Name = "listBox_logs";
             this.listBox_logs.ScrollAlwaysVisible = true;
-            this.listBox_logs.Size = new System.Drawing.Size(194, 290);
+            this.listBox_logs.Size = new System.Drawing.Size(194, 329);
             this.listBox_logs.TabIndex = 1;
             // 
             // groupBox_formatting
@@ -122,7 +113,7 @@
             this.groupBox_formatting.Controls.Add(this.checkBox_names);
             this.groupBox_formatting.Controls.Add(this.checkBox_channel);
             this.groupBox_formatting.Controls.Add(this.checkBox_timestamps);
-            this.groupBox_formatting.Location = new System.Drawing.Point(218, 239);
+            this.groupBox_formatting.Location = new System.Drawing.Point(218, 247);
             this.groupBox_formatting.Name = "groupBox_formatting";
             this.groupBox_formatting.Size = new System.Drawing.Size(169, 91);
             this.groupBox_formatting.TabIndex = 1;
@@ -180,7 +171,7 @@
             this.groupBox_include.Controls.Add(this.checkBox_say);
             this.groupBox_include.Location = new System.Drawing.Point(218, 12);
             this.groupBox_include.Name = "groupBox_include";
-            this.groupBox_include.Size = new System.Drawing.Size(313, 221);
+            this.groupBox_include.Size = new System.Drawing.Size(337, 229);
             this.groupBox_include.TabIndex = 0;
             this.groupBox_include.TabStop = false;
             this.groupBox_include.Text = "Include";
@@ -196,7 +187,7 @@
             this.groupBox_linkshells.Controls.Add(this.checkBox_linkshell3);
             this.groupBox_linkshells.Controls.Add(this.checkBox_linkshell2);
             this.groupBox_linkshells.Controls.Add(this.checkBox_linkshell1);
-            this.groupBox_linkshells.Location = new System.Drawing.Point(212, 15);
+            this.groupBox_linkshells.Location = new System.Drawing.Point(231, 15);
             this.groupBox_linkshells.Name = "groupBox_linkshells";
             this.groupBox_linkshells.Size = new System.Drawing.Size(95, 202);
             this.groupBox_linkshells.TabIndex = 7;
@@ -354,54 +345,21 @@
             this.checkBox_say.Text = "Say";
             this.checkBox_say.UseVisualStyleBackColor = true;
             // 
-            // groupBox_export_settings
-            // 
-            this.groupBox_export_settings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox_export_settings.Controls.Add(this.radioButton_exportToSeparate);
-            this.groupBox_export_settings.Controls.Add(this.radioButton_exportToSingle);
-            this.groupBox_export_settings.Location = new System.Drawing.Point(393, 239);
-            this.groupBox_export_settings.Name = "groupBox_export_settings";
-            this.groupBox_export_settings.Size = new System.Drawing.Size(138, 61);
-            this.groupBox_export_settings.TabIndex = 2;
-            this.groupBox_export_settings.TabStop = false;
-            this.groupBox_export_settings.Text = "Export settings";
-            // 
-            // radioButton_exportToSeparate
-            // 
-            this.radioButton_exportToSeparate.AutoSize = true;
-            this.radioButton_exportToSeparate.Location = new System.Drawing.Point(7, 40);
-            this.radioButton_exportToSeparate.Name = "radioButton_exportToSeparate";
-            this.radioButton_exportToSeparate.Size = new System.Drawing.Size(103, 17);
-            this.radioButton_exportToSeparate.TabIndex = 1;
-            this.radioButton_exportToSeparate.Text = "One file per chat";
-            this.radioButton_exportToSeparate.UseVisualStyleBackColor = true;
-            // 
-            // radioButton_exportToSingle
-            // 
-            this.radioButton_exportToSingle.AutoSize = true;
-            this.radioButton_exportToSingle.Checked = true;
-            this.radioButton_exportToSingle.Location = new System.Drawing.Point(7, 16);
-            this.radioButton_exportToSingle.Name = "radioButton_exportToSingle";
-            this.radioButton_exportToSingle.Size = new System.Drawing.Size(113, 17);
-            this.radioButton_exportToSingle.TabIndex = 0;
-            this.radioButton_exportToSingle.TabStop = true;
-            this.radioButton_exportToSingle.Text = "Export to single file";
-            this.radioButton_exportToSingle.UseVisualStyleBackColor = true;
-            // 
             // button_exportHTML
             // 
             this.button_exportHTML.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_exportHTML.Location = new System.Drawing.Point(451, 336);
+            this.button_exportHTML.Location = new System.Drawing.Point(475, 369);
             this.button_exportHTML.Name = "button_exportHTML";
             this.button_exportHTML.Size = new System.Drawing.Size(80, 23);
             this.button_exportHTML.TabIndex = 3;
             this.button_exportHTML.Text = "Export HTML";
             this.button_exportHTML.UseVisualStyleBackColor = true;
+            this.button_exportHTML.Click += new System.EventHandler(this.button_exportHTML_Click);
             // 
             // button_exportText
             // 
             this.button_exportText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_exportText.Location = new System.Drawing.Point(370, 336);
+            this.button_exportText.Location = new System.Drawing.Point(394, 369);
             this.button_exportText.Name = "button_exportText";
             this.button_exportText.Size = new System.Drawing.Size(75, 23);
             this.button_exportText.TabIndex = 4;
@@ -412,7 +370,7 @@
             // button_refresh
             // 
             this.button_refresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button_refresh.Location = new System.Drawing.Point(218, 336);
+            this.button_refresh.Location = new System.Drawing.Point(119, 351);
             this.button_refresh.Name = "button_refresh";
             this.button_refresh.Size = new System.Drawing.Size(75, 23);
             this.button_refresh.TabIndex = 5;
@@ -420,18 +378,61 @@
             this.button_refresh.UseVisualStyleBackColor = true;
             this.button_refresh.Click += new System.EventHandler(this.button_refresh_Click);
             // 
+            // groupBox_conversation
+            // 
+            this.groupBox_conversation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox_conversation.Controls.Add(this.label1);
+            this.groupBox_conversation.Controls.Add(this.numericUpDown1);
+            this.groupBox_conversation.Controls.Add(this.checkBox1);
+            this.groupBox_conversation.Location = new System.Drawing.Point(394, 247);
+            this.groupBox_conversation.Name = "groupBox_conversation";
+            this.groupBox_conversation.Size = new System.Drawing.Size(161, 116);
+            this.groupBox_conversation.TabIndex = 6;
+            this.groupBox_conversation.TabStop = false;
+            this.groupBox_conversation.Text = "Conversations";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 68);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(118, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Seconds before break: ";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(13, 84);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.ReadOnly = true;
+            this.numericUpDown1.Size = new System.Drawing.Size(111, 20);
+            this.numericUpDown1.TabIndex = 1;
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(6, 19);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(153, 30);
+            this.checkBox1.TabIndex = 0;
+            this.checkBox1.Text = "Add blank lines to indicate \r\nbreaks in conversation";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(543, 370);
-            this.Controls.Add(this.button_refresh);
+            this.ClientSize = new System.Drawing.Size(567, 403);
+            this.Controls.Add(this.groupBox_conversation);
             this.Controls.Add(this.button_exportText);
             this.Controls.Add(this.button_exportHTML);
-            this.Controls.Add(this.groupBox_export_settings);
             this.Controls.Add(this.groupBox_include);
             this.Controls.Add(this.groupBox_formatting);
             this.Controls.Add(this.groupBox_logs);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(559, 409);
             this.Name = "MainForm";
             this.Text = "ACT Log Extractor";
@@ -443,8 +444,9 @@
             this.groupBox_include.PerformLayout();
             this.groupBox_linkshells.ResumeLayout(false);
             this.groupBox_linkshells.PerformLayout();
-            this.groupBox_export_settings.ResumeLayout(false);
-            this.groupBox_export_settings.PerformLayout();
+            this.groupBox_conversation.ResumeLayout(false);
+            this.groupBox_conversation.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -455,7 +457,6 @@
         private System.Windows.Forms.GroupBox groupBox_formatting;
         private System.Windows.Forms.GroupBox groupBox_include;
         private System.Windows.Forms.GroupBox groupBox_linkshells;
-        private System.Windows.Forms.GroupBox groupBox_export_settings;
         private System.Windows.Forms.Button button_exportHTML;
         private System.Windows.Forms.Button button_exportText;
         private System.Windows.Forms.Button button_refresh;
@@ -478,10 +479,11 @@
         public System.Windows.Forms.CheckBox checkBox_alliance;
         public System.Windows.Forms.CheckBox checkBox_party;
         public System.Windows.Forms.CheckBox checkBox_say;
-        public System.Windows.Forms.RadioButton radioButton_exportToSeparate;
-        public System.Windows.Forms.RadioButton radioButton_exportToSingle;
-        private System.Windows.Forms.Button button_delete;
         public System.Windows.Forms.Label label_size;
+        private System.Windows.Forms.GroupBox groupBox_conversation;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 

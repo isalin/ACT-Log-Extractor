@@ -60,5 +60,27 @@ namespace ACT_Log_Extractor
                 }
             }
         }
+
+        private void button_exportHTML_Click(object sender, EventArgs e)
+        {
+            if (boxesChecked())
+            {
+                log.parse("filepath", this, true);
+            }
+            else
+            {
+                MessageBox.Show("Nothing has been selected for export.", "Error");
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
